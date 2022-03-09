@@ -17,7 +17,7 @@ ui <- fluidPage(
 
     # Sidebar with a slider input for number of bins 
     sidebarLayout(
-        sidebarPanel(
+        sidebarPanel(2, 
             sliderInput("bins",
                         "Number of bins:",
                         min = 1,
@@ -26,7 +26,7 @@ ui <- fluidPage(
         ),
 
         # Show a plot of the generated distribution
-        mainPanel(
+        mainPanel(10,
            plotOutput("distPlot")
         )
     )
@@ -34,14 +34,16 @@ ui <- fluidPage(
 
 # Define server logic required to draw a histogram
 server <- function(input, output) {
-
-    output$distPlot <- renderPlot({
-        # generate bins based on input$bins from ui.R
+    bins <- reactive({
         x    <- faithful[, 2]
         bins <- seq(min(x), max(x), length.out = input$bins + 1)
+        list(x = x, bins = bins)
+    })
+    output$distPlot <- renderPlot({
+        # generate bins based on input$bins from ui.R
 
         # draw the histogram with the specified number of bins
-        hist(x, breaks = bins, col = 'darkgray', border = 'white')
+        hist(bins()$x, breaks = bins()$bins, col = 'darkgray', border = 'white')
     })
 }
 

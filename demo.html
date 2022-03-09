@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+  <html lang = "de">
+    <head>
+    
+    <title>Demo Seite</title>
+    
+    <script type = "text/javascript">
+      function toggler(obj, texts = Array("Clicked", "Click me!")){
+      	if(obj.style.color != 'red'){
+      		obj.style.color = 'red';
+      		obj.innerHTML = texts[0];
+      	} else {
+      		obj.style.color = 'teal';
+      		obj.innerHTML = texts[1];
+      	}
+      }
+    </script>
+  
+  </head>
+  
+  <body>
+    Content goes here...
+  
+    <a href = "https://www.google.com">A link to google</a>
+    
+    <img  src= "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" 
+    alt = "The Google logo"/> 
+    
+    <p style = "color:red">
+      Roter <span style = "font-size:40px">großer</span>Text
+    </p>
+    
+    <div style = "margin-left:500px;border: solid 1px;padding:5px;max-width:768px;font-family:serif;color:teal; 
+    font-size:100px;font-weight:bold">
+      A container
+  
+      <h6 onclick = "if(this.style.color != 'red'){this.style.color = 'red';this.innerHTML = 'Clicked';} else {this.style.color = 'teal';this.innerHTML = 'Click me!';}">
+        Click me!
+        </h6>
+      <h4 onmouseover = 'toggler(this, ["Aua", "Uff"])' onmouseout = 'toggler(this, ["Aua", "Uff"])' 
+      style = "border:solid 1px">
+        Uff
+      </h4>
+    </div>
+  
+  </body>
+</html>
